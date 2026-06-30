@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Resources/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/GameCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/coin.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/spikes.tscn" type="PackedScene" id=5]
 
 [node name="Node" type="Node"]
 
@@ -23,3 +24,6 @@ position = Vector2( -52.5277, -45.3532 )
 
 [node name="Coin2" parent="." instance=ExtResource( 4 )]
 position = Vector2( -107.105, -44.8408 )
+
+[node name="Spikes" parent="." instance=ExtResource( 5 )]
+position = Vector2( -81, -18 )
