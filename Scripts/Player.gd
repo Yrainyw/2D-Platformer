@@ -1,11 +1,13 @@
 extends KinematicBody2D
 
-var gravity = 1000
+var gravity = 1000 # 重力大小，越大下落越快
 var velocity = Vector2.ZERO
-var maxHorizontalSpeed = 140
-var horizontalAcceleration = 2000
-var jumpSpeed = 360
-var jumpTerminationMultiplier = 4
+
+var maxHorizontalSpeed = 140 # 水平移动最大速度(跑多快)
+var horizontalAcceleration = 2000 # 水平加速度(多快能跑到最大速度,越大起步越快)
+
+var jumpSpeed = 360 # 跳跃初速度(跳多高)
+var jumpTerminationMultiplier = 4  # 松开跳跃键后,重力加倍的倍数(控制"跳跃高度可变":点一下跳得低,按住跳得高)
 
 
 func _ready():
