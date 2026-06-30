@@ -73,4 +73,3 @@ func updateAnimation():
 
 func on_hazard_area_entered(area2d):
 	emit_signal("died")
-	print("die")
