@@ -31,7 +31,7 @@ extents = Vector2( 5.00045, 8.03342 )
 script = ExtResource( 2 )
 
 [node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 205.045
 one_shot = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

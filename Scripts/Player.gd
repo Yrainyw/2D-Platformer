@@ -8,6 +8,7 @@ var horizontalAcceleration = 2000 # 水平加速度(多快能跑到最大速度,
 
 var jumpSpeed = 360 # 跳跃初速度(跳多高)
 var jumpTerminationMultiplier = 4  # 松开跳跃键后,重力加倍的倍数(控制"跳跃高度可变":点一下跳得低,按住跳得高)
+var hasDoubleJump = false
 
 
 func _ready():
@@ -24,8 +25,11 @@ func _process(delta):
 		
 	velocity.x = clamp(velocity.x, -maxHorizontalSpeed, maxHorizontalSpeed)
 
-	if (moveVector.y < 0 && (is_on_floor() || !$CoyoteTimer.is_stopped())):
+	if (moveVector.y < 0 && (is_on_floor() || !$CoyoteTimer.is_stopped() || hasDoubleJump)):
 		velocity.y = moveVector.y * jumpSpeed
+		if (!is_on_floor() && $CoyoteTimer.is_stopped()):
+			hasDoubleJump = false
+		$CoyoteTimer.stop()
 		
 	if (velocity.y < 0 && !Input.is_action_pressed("jump")):
 		velocity.y += gravity * jumpTerminationMultiplier * delta
@@ -37,6 +41,9 @@ func _process(delta):
 	
 	if (wasOnFloor && !is_on_floor()):
 		$CoyoteTimer.start()
+		
+	if (is_on_floor()):
+		hasDoubleJump = true
 	
 	updateAnimation()
 	
