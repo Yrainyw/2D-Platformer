@@ -10,7 +10,7 @@ var targetNode = null  # 改成持有具体引用,而不是每帧搜索分组
 func _ready():
 	VisualServer.set_default_clear_color(backgroundColor)
 
-func _process(delta):
+func _process(_delta):
 	if targetNode != null and is_instance_valid(targetNode):
 		targetPosition = targetNode.global_position
 	global_position = lerp(global_position, targetPosition, weight)

@@ -15,7 +15,7 @@ var maxDashSpeed = 500
 var minDashSpeed = 200
 var hasDash = true
 
-var jumpSpeed = 360 # 跳跃初速度(跳多高)
+var jumpSpeed = 320 # 跳跃初速度(跳多高)
 var jumpTerminationMultiplier = 4  # 松开跳跃键后,重力加倍的倍数(控制"跳跃高度可变":点一下跳得低,按住跳得高)
 var hasDoubleJump = false
 
