@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Assets/Player/character_0006.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -31,11 +31,16 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 5.00045, 8.03342 )
 
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 11.0
+height = 10.0
+
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
 ]]
 collision_layer = 0
 script = ExtResource( 2 )
+dashHazardMask = 262144
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.2
@@ -52,8 +57,8 @@ shape = SubResource( 1 )
 
 [node name="HazardArea" type="Area2D" parent="."]
 visible = false
-collision_layer = 262144
-collision_mask = 262144
+collision_layer = 0
+collision_mask = 327680
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea"]
 position = Vector2( 0, -6.954 )
@@ -68,3 +73,13 @@ animation = "run"
 visible = false
 position = Vector2( 0.0207672, -8.10117 )
 shape = SubResource( 4 )
+
+[node name="DashArea" type="Area2D" parent="."]
+position = Vector2( 0, -11 )
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DashArea"]
+rotation = 1.5708
+shape = SubResource( 5 )
+disabled = true
