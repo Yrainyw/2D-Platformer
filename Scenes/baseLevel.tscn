@@ -6,7 +6,9 @@
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scripts/baseLevel.gd" type="Script" id=7]
 
-[node name="BaseLevel" type="Node"]
+[node name="BaseLevel" type="Node" groups=[
+"base_level",
+]]
 script = ExtResource( 7 )
 
 [node name="GameCamera" parent="." instance=ExtResource( 4 )]
