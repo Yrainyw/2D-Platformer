@@ -12,9 +12,9 @@ var xNoiseSamplePosition = Vector2.ZERO
 var yNoiseSamplePosition = Vector2.ZERO
 
 var noiseSampleTravelRate = 500
-var maxShakeOffset = 4
+var maxShakeOffset = 10
 var currentShakePercentage = 0
-var shakeDecay = 6
+var shakeDecay = 3
 
 
 func _ready():
@@ -25,7 +25,6 @@ func _process(delta):
 	acquire_target_position()
 	
 	global_position = lerp(targetPosition, global_position, pow(2, -15 * delta))
-
 	
 	if (currentShakePercentage > 0):
 		xNoiseSamplePosition += xNoiseSampleVector * noiseSampleTravelRate * delta
