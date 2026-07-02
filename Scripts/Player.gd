@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 signal died
 
+var playerDeathScene = preload("res://Scenes/playerDeath.tscn")
+
 enum State { NORMAL, DASHING }
 
 export (int, LAYERS_2D_PHYSICS) var dashHazardMask
@@ -131,11 +133,19 @@ func updateAnimation():
 
 	if (moveVector.x != 0):
 		$AnimatedSprite.flip_h = true if moveVector.x > 0 else false
-	
+
+
+func kill():
+	var playerDeathInstance = playerDeathScene.instance()
+	get_parent().add_child_below_node(self, playerDeathInstance)
+	playerDeathInstance.global_position = global_position
+	playerDeathInstance.velocity = velocity
+	emit_signal("died")
+
 
 func on_hazard_area_entered(_area2d):
-	$"/root/Helpers".apply_camera_shake(.75)	
-	emit_signal("died")
+	$"/root/Helpers".apply_camera_shake(1)
+	call_deferred("kill")
 	
 	
 func on_dash_area_entered(area2d):
