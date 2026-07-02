@@ -47,10 +47,13 @@ tracks/2/keys = {
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 5.00045, 8.03342 )
 
-[node name="PlayerDeath" type="KinematicBody2D"]
+[node name="PlayerDeath" type="KinematicBody2D" groups=[
+"player_death",
+]]
 script = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "death"
 anims/death = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

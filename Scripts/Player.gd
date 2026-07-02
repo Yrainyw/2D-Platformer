@@ -25,6 +25,7 @@ var currentState = State.NORMAL
 var isStateNew = true
 
 var defaultHazardMask = 0
+var isDying = false
 
 
 func _ready():
@@ -136,6 +137,10 @@ func updateAnimation():
 
 
 func kill():
+	if (isDying):
+		return
+		
+	isDying = true
 	var playerDeathInstance = playerDeathScene.instance()
 	get_parent().add_child_below_node(self, playerDeathInstance)
 	playerDeathInstance.global_position = global_position
