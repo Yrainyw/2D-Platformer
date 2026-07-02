@@ -34,7 +34,6 @@ func coin_total_changed(newTotal):
 func register_player(player):
 	currentPlayerNode = player
 	currentPlayerNode.connect("died", self, "on_player_died", [], CONNECT_DEFERRED)
-	$GameCamera.set_target(player)  # 路径根据你实际节点结构调整
 	
 	
 func create_player():
