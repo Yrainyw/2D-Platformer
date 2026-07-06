@@ -8,6 +8,8 @@ var direction = Vector2.ZERO
 var gravity = 500
 var startDirection = Vector2.RIGHT
 
+export var isSpawning = true
+
 
 func _ready():
 	direction = startDirection
@@ -16,12 +18,15 @@ func _ready():
 
 
 func _process(delta):
+	if (isSpawning):
+		return
+	
 	velocity.x = (direction * maxSpeed).x
 	
 	velocity.y += gravity * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
-	$AnimatedSprite.flip_h = true if direction .x > 0 else false
+	$Visuals/AnimatedSprite.flip_h = true if direction .x > 0 else false
 
 
 func kill():
