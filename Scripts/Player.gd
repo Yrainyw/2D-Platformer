@@ -27,9 +27,12 @@ var isStateNew = true
 var defaultHazardMask = 0
 var isDying = false
 
+var footstepParticles = preload("res://Scenes/footstepParticles.tscn")
+
 
 func _ready():
 	$HazardArea.connect("area_entered", self, "on_hazard_area_entered")
+	$AnimatedSprite.connect("frame_changed", self, "on_animated_sprite_frame_changed")
 	$DashArea.connect("area_entered", self, "on_dash_area_entered")
 	defaultHazardMask = $HazardArea.collision_mask
 	
@@ -81,6 +84,9 @@ func process_normal(delta):
 	
 	if (wasOnFloor && !is_on_floor()):
 		$CoyoteTimer.start()
+		
+	if (!wasOnFloor && is_on_floor() && !isStateNew):
+		spawn_footsteps(1.5)
 		
 	if (is_on_floor()):
 		hasDoubleJump = true
@@ -155,6 +161,20 @@ func on_hazard_area_entered(_area2d):
 	call_deferred("kill")
 	
 	
+func spawn_footsteps(scale = 1):
+	var footstep = footstepParticles.instance()
+	get_parent().add_child(footstep)
+	footstep.scale = Vector2.ONE * scale
+	footstep.global_position = global_position
+	
+	
 func on_dash_area_entered(area2d):
 	if area2d.is_in_group("enemy_hurtbox"):
 		area2d.get_parent().take_damage()
+
+
+func on_animated_sprite_frame_changed():
+	if ($AnimatedSprite.animation == "run" && $AnimatedSprite.frame == 0):
+		spawn_footsteps()
+
+		
