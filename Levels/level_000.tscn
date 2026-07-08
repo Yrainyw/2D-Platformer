@@ -46,70 +46,67 @@ position = Vector2( -981, -18 )
 [node name="Coin2" parent="Collectables" index="1" instance=ExtResource( 7 )]
 position = Vector2( 360, -9 )
 
-[node name="Coin23" parent="Collectables" index="2" instance=ExtResource( 7 )]
-position = Vector2( 360, -9 )
-
-[node name="Coin24" parent="Collectables" index="3" instance=ExtResource( 7 )]
+[node name="Coin24" parent="Collectables" index="2" instance=ExtResource( 7 )]
 position = Vector2( -27, -153 )
 
-[node name="Coin25" parent="Collectables" index="4" instance=ExtResource( 7 )]
+[node name="Coin25" parent="Collectables" index="3" instance=ExtResource( 7 )]
 position = Vector2( -351, -81 )
 
-[node name="Coin3" parent="Collectables" index="5" instance=ExtResource( 7 )]
+[node name="Coin3" parent="Collectables" index="4" instance=ExtResource( 7 )]
 position = Vector2( 315, -9 )
 
-[node name="Coin4" parent="Collectables" index="6" instance=ExtResource( 7 )]
+[node name="Coin4" parent="Collectables" index="5" instance=ExtResource( 7 )]
 position = Vector2( 270, -9 )
 
-[node name="Coin5" parent="Collectables" index="7" instance=ExtResource( 7 )]
+[node name="Coin5" parent="Collectables" index="6" instance=ExtResource( 7 )]
 position = Vector2( 225, -9 )
 
-[node name="Coin6" parent="Collectables" index="8" instance=ExtResource( 7 )]
+[node name="Coin6" parent="Collectables" index="7" instance=ExtResource( 7 )]
 position = Vector2( 180, -9 )
 
-[node name="Coin9" parent="Collectables" index="9" instance=ExtResource( 7 )]
+[node name="Coin9" parent="Collectables" index="8" instance=ExtResource( 7 )]
 position = Vector2( -99, -63 )
 
-[node name="Coin10" parent="Collectables" index="10" instance=ExtResource( 7 )]
+[node name="Coin10" parent="Collectables" index="9" instance=ExtResource( 7 )]
 position = Vector2( -153, -252 )
 
-[node name="Coin11" parent="Collectables" index="11" instance=ExtResource( 7 )]
+[node name="Coin11" parent="Collectables" index="10" instance=ExtResource( 7 )]
 position = Vector2( -225, -63 )
 
-[node name="Coin12" parent="Collectables" index="12" instance=ExtResource( 7 )]
+[node name="Coin12" parent="Collectables" index="11" instance=ExtResource( 7 )]
 position = Vector2( -360, -171 )
 
-[node name="Coin13" parent="Collectables" index="13" instance=ExtResource( 7 )]
+[node name="Coin13" parent="Collectables" index="12" instance=ExtResource( 7 )]
 position = Vector2( -252, -207 )
 
-[node name="Coin14" parent="Collectables" index="14" instance=ExtResource( 7 )]
+[node name="Coin14" parent="Collectables" index="13" instance=ExtResource( 7 )]
 position = Vector2( -108, -261 )
 
-[node name="Coin15" parent="Collectables" index="15" instance=ExtResource( 7 )]
+[node name="Coin15" parent="Collectables" index="14" instance=ExtResource( 7 )]
 position = Vector2( -72, -261 )
 
-[node name="Coin16" parent="Collectables" index="16" instance=ExtResource( 7 )]
+[node name="Coin16" parent="Collectables" index="15" instance=ExtResource( 7 )]
 position = Vector2( 72, -153 )
 
-[node name="Coin17" parent="Collectables" index="17" instance=ExtResource( 7 )]
+[node name="Coin17" parent="Collectables" index="16" instance=ExtResource( 7 )]
 position = Vector2( -450, -171 )
 
-[node name="Coin8" parent="Collectables" index="18" instance=ExtResource( 7 )]
+[node name="Coin8" parent="Collectables" index="17" instance=ExtResource( 7 )]
 position = Vector2( -666, -99 )
 
-[node name="Coin18" parent="Collectables" index="19" instance=ExtResource( 7 )]
+[node name="Coin18" parent="Collectables" index="18" instance=ExtResource( 7 )]
 position = Vector2( -720, -63 )
 
-[node name="Coin22" parent="Collectables" index="20" instance=ExtResource( 7 )]
+[node name="Coin22" parent="Collectables" index="19" instance=ExtResource( 7 )]
 position = Vector2( -423, -99 )
 
-[node name="Coin19" parent="Collectables" index="21" instance=ExtResource( 7 )]
+[node name="Coin19" parent="Collectables" index="20" instance=ExtResource( 7 )]
 position = Vector2( -792, 9 )
 
-[node name="Coin20" parent="Collectables" index="22" instance=ExtResource( 7 )]
+[node name="Coin20" parent="Collectables" index="21" instance=ExtResource( 7 )]
 position = Vector2( -873, 45 )
 
-[node name="Coin21" parent="Collectables" index="23" instance=ExtResource( 7 )]
+[node name="Coin21" parent="Collectables" index="22" instance=ExtResource( 7 )]
 position = Vector2( -1026, 9 )
 
 [node name="EnemySpawner" parent="Enemies" index="0" instance=ExtResource( 5 )]

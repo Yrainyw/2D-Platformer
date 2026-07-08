@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Resources/theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/UI/animatedButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/mainMenu.gd" type="Script" id=3]
 [ext_resource path="res://Resources/tileset.tres" type="TileSet" id=4]
-[ext_resource path="res://Scripts/GameCamera.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/GameCamera.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Resources/decorative_tileset.tres" type="TileSet" id=7]
 [ext_resource path="res://Scenes/clouds.tscn" type="PackedScene" id=8]
@@ -17,15 +16,10 @@ script = ExtResource( 3 )
 
 [node name="Node2D" type="Node2D" parent="."]
 
-[node name="GameCamera" type="Camera2D" parent="Node2D" groups=[
-"camera",
-] instance=ExtResource( 6 )]
-current = true
-script = ExtResource( 5 )
-backgroundColor = Color( 0.87451, 0.956863, 0.964706, 1 )
+[node name="GameCamera" parent="Node2D" instance=ExtResource( 6 )]
 shakeNoise = SubResource( 1 )
 
-[node name="Clouds" type="Node2D" parent="Node2D/GameCamera" instance=ExtResource( 8 )]
+[node name="Clouds" parent="Node2D/GameCamera" instance=ExtResource( 8 )]
 
 [node name="TileMap" type="TileMap" parent="Node2D"]
 tile_set = ExtResource( 4 )
