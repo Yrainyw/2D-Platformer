@@ -28,6 +28,7 @@ var defaultHazardMask = 0
 var isDying = false
 
 var footstepParticles = preload("res://Scenes/footstepParticles.tscn")
+var hasStartedRunning = false  # 新增：标记是否已经真正开始过跑步动画，避免开局误触发脚步声
 
 
 func _ready():
@@ -181,6 +182,9 @@ func on_dash_area_entered(area2d):
 
 func on_animated_sprite_frame_changed():
 	if ($AnimatedSprite.animation == "run" && $AnimatedSprite.frame == 0):
-		spawn_footsteps()
-
+		if (hasStartedRunning):
+			spawn_footsteps()
+		hasStartedRunning = true
+	else:
+		hasStartedRunning = false
 		
