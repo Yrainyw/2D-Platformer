@@ -70,9 +70,15 @@ func process_normal(delta):
 	if (moveVector.y < 0 && (is_on_floor() || !$CoyoteTimer.is_stopped() || hasDoubleJump)):
 		velocity.y = moveVector.y * jumpSpeed
 		if (!is_on_floor() && $CoyoteTimer.is_stopped()):
-			$"/root/Helpers".apply_camera_shake(.75)
+			# 不在地面且coyote time已结束，说明是double jump，消耗掉
 			hasDoubleJump = false
-		$CoyoteTimer.stop()
+			$"/root/Helpers".apply_camera_shake(.75)
+		elif (!is_on_floor() && !$CoyoteTimer.is_stopped()):
+			# coyote time跳跃，不消耗double jump
+			$CoyoteTimer.stop()
+		else:
+			# 正常从地面起跳
+			$CoyoteTimer.stop()
 		
 	if (velocity.y < 0 && !Input.is_action_pressed("jump")):
 		velocity.y += gravity * jumpTerminationMultiplier * delta

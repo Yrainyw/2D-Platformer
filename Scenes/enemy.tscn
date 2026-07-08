@@ -137,6 +137,7 @@ animations = [ {
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 0
 script = ExtResource( 3 )
+isSpawning = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "spawn"
@@ -152,7 +153,7 @@ shape = SubResource( 2 )
 
 [node name="GoalDetector" type="Area2D" parent="."]
 visible = false
-collision_layer = 131072
+collision_layer = 0
 collision_mask = 131072
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GoalDetector"]
@@ -179,7 +180,7 @@ shape = SubResource( 5 )
 disabled = true
 
 [node name="Visuals" type="Node2D" parent="."]
-scale = Vector2( 1e-05, 1e-05 )
+scale = Vector2( 0.4608, 0.4608 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visuals"]
 frames = SubResource( 1 )
