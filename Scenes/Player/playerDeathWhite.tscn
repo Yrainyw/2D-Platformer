@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Assets/Player/character_0006.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/playerDeath.gd" type="Script" id=2]
-[ext_resource path="res://Assets/Effects/particles.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Player/character_0009.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Effects/particles.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/playerDeath.gd" type="Script" id=3]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "death"
 length = 2.0
 step = 0.05
@@ -97,18 +97,18 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="CanvasItemMaterial" id=3]
+[sub_resource type="CanvasItemMaterial" id=2]
 particles_animation = true
 particles_anim_h_frames = 3
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Gradient" id=7]
+[sub_resource type="Gradient" id=3]
 offsets = PoolRealArray( 0, 0.560386, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 0.533333, 0.533333, 0.533333, 0.627451, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=8]
-gradient = SubResource( 7 )
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
 
 [sub_resource type="Curve" id=5]
 _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.160784, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.513725, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
@@ -116,7 +116,7 @@ _data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.160784, 1 ), 0.0, 0.0, 0, 
 [sub_resource type="CurveTexture" id=6]
 curve = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="ParticlesMaterial" id=7]
 lifetime_randomness = 1.0
 emission_shape = 1
 emission_sphere_radius = 7.0
@@ -133,33 +133,34 @@ orbit_velocity_random = 0.0
 scale = 3.0
 scale_random = 1.0
 scale_curve = SubResource( 6 )
-color_ramp = SubResource( 8 )
+color_ramp = SubResource( 4 )
 anim_offset = 1.0
 anim_offset_random = 1.0
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 5.00045, 8.03342 )
 
 [node name="PlayerDeath" type="KinematicBody2D" groups=[
 "player_death",
 ]]
-script = ExtResource( 2 )
+script = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "death"
-anims/death = SubResource( 2 )
+anims/death = SubResource( 1 )
 
 [node name="Visuals" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite" parent="Visuals"]
+visible = false
 position = Vector2( 0, -7 )
 rotation = 1.5708
-scale = Vector2( 0.821574, 0.821574 )
+scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -12 )
 
 [node name="Particles2D" type="Particles2D" parent="Visuals"]
-material = SubResource( 3 )
+material = SubResource( 2 )
 position = Vector2( 9.65062, -7.79473 )
 emitting = false
 amount = 15
@@ -167,10 +168,10 @@ lifetime = 1.5
 one_shot = true
 explosiveness = 0.9
 local_coords = false
-process_material = SubResource( 4 )
-texture = ExtResource( 3 )
+process_material = SubResource( 7 )
+texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2( 0.0207672, -8.10117 )
-shape = SubResource( 1 )
+shape = SubResource( 8 )

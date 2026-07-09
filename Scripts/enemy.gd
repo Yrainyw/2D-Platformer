@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-var enemyDeathScene = preload("res://Scenes/EnemyDeath.tscn")
+var enemyDeathScene = preload("res://Scenes/Enemy/EnemyDeath.tscn")
 
 var maxSpeed = 25
 var velocity = Vector2.ZERO

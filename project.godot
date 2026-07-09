@@ -19,6 +19,8 @@ config/icon="res://icon.png"
 LevelManager="*res://Scenes/levelManager.tscn"
 Helpers="*res://Scripts/helpers.gd"
 ScreenTransitionManager="*res://Scenes/UI/screenTransitionManager.tscn"
+MenuState="*res://Scripts/menuState.gd"
+PlayerData="*res://Scripts/Player/playerData.gd"
 
 [display]
 

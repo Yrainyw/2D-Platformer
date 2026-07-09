@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Resources/theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/UI/animatedButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/mainMenu.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/UI/menuBackground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Resources/fontOutline.tres" type="DynamicFont" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "default"
@@ -21,12 +22,31 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 1.1, 1.1 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=2]
+resource_name = "default"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/PanelContainer:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.9, 0.9 ), Vector2( 1.1, 1.1 ), Vector2( 1e-05, 1e-05 ) ]
+}
+
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
 anims/default = SubResource( 1 )
+
+[node name="DisappearAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/default = SubResource( 2 )
 
 [node name="MenuBackground" parent="." instance=ExtResource( 4 )]
 
@@ -81,3 +101,19 @@ margin_top = 60.0
 margin_right = 104.0
 margin_bottom = 84.0
 text = "QUIT"
+
+[node name="SelectCharacterLabel" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 10.0
+margin_bottom = 10.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "- CHOOSE YOUR PLAYER CHARACTER -"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

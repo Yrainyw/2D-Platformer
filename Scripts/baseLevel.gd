@@ -3,20 +3,17 @@ extends Node
 signal coin_total_changed
 
 export (PackedScene) var levelCompleteScene
-
-var playerScene = preload("res://Scenes/Player.tscn")
+var playerScene = preload("res://Scenes/Player/Player.tscn")   # 保底默认角色
 var pauseScene = preload("res://Scenes/UI/pauseMenu.tscn")
-
 var spawnPosition = Vector2.ZERO
 var currentPlayerNode = null
-
 var totalCoins = 0
 var collectedCoins = 0
 
 
 func _ready():
-	spawnPosition = $PlayerRoot/Player.global_position
-	register_player($PlayerRoot/Player)
+	spawnPosition = $PlayerRoot.global_position
+	create_player()
 	coin_total_changed(get_tree().get_nodes_in_group("coin").size())
 	
 	$Flag.connect("player_won", self, "on_player_won")
@@ -44,9 +41,13 @@ func register_player(player):
 	
 	
 func create_player():
-	var playerInstance = playerScene.instance()
+	var selectedScene = $"/root/PlayerData".selectedPlayerScene
+	var sceneToUse = selectedScene if selectedScene != null else playerScene
+	
+	var playerInstance = sceneToUse.instance()
 	$PlayerRoot.add_child(playerInstance)
 	playerInstance.global_position = spawnPosition
+	playerInstance.add_to_group("player")
 	register_player(playerInstance)
 	
 	
@@ -61,4 +62,3 @@ func on_player_won():
 	currentPlayerNode.queue_free()
 	var levelComplete = levelCompleteScene.instance()
 	add_child(levelComplete)
-

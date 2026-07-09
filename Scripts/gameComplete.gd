@@ -8,5 +8,5 @@ func _ready():
 
 
 func on_continue_pressed():
-	$"/root/ScreenTransitionManager".transition_to_scene("res://Scenes/UI/mainMenu")
+	$"/root/ScreenTransitionManager".transition_to_scene("res://Scenes/UI/mainMenu.tscn")
 	

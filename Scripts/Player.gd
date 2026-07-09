@@ -2,11 +2,11 @@ extends KinematicBody2D
 
 signal died
 
-var playerDeathScene = preload("res://Scenes/playerDeath.tscn")
-
 enum State { NORMAL, DASHING }
 
+export (PackedScene) var playerDeathScene
 export (int, LAYERS_2D_PHYSICS) var dashHazardMask
+export var dashCooldownTime = 0.45 
 
 var gravity = 1000 # 重力大小，越大下落越快
 var velocity = Vector2.ZERO
@@ -27,7 +27,7 @@ var isStateNew = true
 var defaultHazardMask = 0
 var isDying = false
 
-var footstepParticles = preload("res://Scenes/footstepParticles.tscn")
+var footstepParticles = preload("res://Scenes/Player/footstepParticles.tscn")
 var hasStartedRunning = false  # 新增：标记是否已经真正开始过跑步动画，避免开局误触发脚步声
 
 
@@ -35,6 +35,7 @@ func _ready():
 	$HazardArea.connect("area_entered", self, "on_hazard_area_entered")
 	$AnimatedSprite.connect("frame_changed", self, "on_animated_sprite_frame_changed")
 	$DashArea.connect("area_entered", self, "on_dash_area_entered")
+	$DashCooldownTimer.connect("timeout", self, "on_dash_cooldown_timeout")
 	defaultHazardMask = $HazardArea.collision_mask
 	
 	
@@ -97,14 +98,18 @@ func process_normal(delta):
 		
 	if (is_on_floor()):
 		hasDoubleJump = true
-		hasDash = true
 		
 	if (Input.is_action_just_pressed("dash") && hasDash):
 		hasDash = false
+		$DashCooldownTimer.start(dashCooldownTime)
 		call_deferred("change_state", State.DASHING)
 	
 	updateAnimation()
 
+
+func on_dash_cooldown_timeout():   # 新增
+	hasDash = true
+	
 
 func process_dash(delta):
 	if (isStateNew):
@@ -188,4 +193,4 @@ func on_animated_sprite_frame_changed():
 			hasStartedRunning = true
 	else:
 		hasStartedRunning = false
-		
+
