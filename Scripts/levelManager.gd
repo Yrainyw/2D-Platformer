@@ -9,9 +9,9 @@ func change_level(levelIndex):
 	currentLevelIndex = levelIndex
 	
 	if (currentLevelIndex >= levelScenes.size()):
-		currentLevelIndex = 0
-	
-	$"/root/ScreenTransitionManager".transition_to_scene(levelScenes[currentLevelIndex].resource_path)
+		$"/root/ScreenTransitionManager".transition_to_scene("res://Scenes/UI/gameComplete.tscn")
+	else:
+		$"/root/ScreenTransitionManager".transition_to_scene(levelScenes[currentLevelIndex].resource_path)
 
 
 func increment_level():

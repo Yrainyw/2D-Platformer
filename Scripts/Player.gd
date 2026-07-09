@@ -181,10 +181,11 @@ func on_dash_area_entered(area2d):
 
 
 func on_animated_sprite_frame_changed():
-	if ($AnimatedSprite.animation == "run" && $AnimatedSprite.frame == 0):
-		if (hasStartedRunning):
-			spawn_footsteps()
-		hasStartedRunning = true
+	if ($AnimatedSprite.animation == "run"):
+		if ($AnimatedSprite.frame == 0):
+			if (hasStartedRunning):
+				spawn_footsteps()
+			hasStartedRunning = true
 	else:
 		hasStartedRunning = false
 		
