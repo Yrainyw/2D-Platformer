@@ -12,6 +12,7 @@ func _ready():
 	playButton.connect("pressed", self, "on_play_pressed")
 	quitButton.connect("pressed", self, "on_play_quit")
 	disappearAnimationPlayer.connect("animation_finished", self, "on_disappear_finished")
+	optionsButton.connect("pressed", self, "on_options_pressed")
 
 
 func on_play_pressed():
@@ -27,3 +28,7 @@ func on_disappear_finished(_anim_name):
 
 func on_play_quit():
 	get_tree().quit()
+
+
+func on_options_pressed():
+	$"/root/ScreenTransitionManager".transition_to_scene("res://Scenes/UI/optionsMenuStandalone.tscn")
