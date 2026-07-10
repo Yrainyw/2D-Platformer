@@ -306,7 +306,7 @@ position = Vector2( 0, -12 )
 shape = SubResource( 5 )
 
 [node name="Blue" type="KinematicBody2D" parent="."]
-position = Vector2( 189, 73 )
+position = Vector2( 18, 90 )
 script = ExtResource( 11 )
 characterPlayerScene = ExtResource( 17 )
 
@@ -317,6 +317,7 @@ anims/jump = SubResource( 11 )
 position = Vector2( 0, -12 )
 frames = SubResource( 12 )
 animation = "idle"
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blue"]
 visible = false
@@ -330,6 +331,7 @@ position = Vector2( 0, -12 )
 shape = SubResource( 5 )
 
 [node name="White" type="KinematicBody2D" parent="."]
+visible = false
 position = Vector2( 21, 90 )
 script = ExtResource( 11 )
 characterPlayerScene = ExtResource( 20 )

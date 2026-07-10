@@ -1,32 +1,33 @@
 extends CanvasLayer
 
-export(float) var displayDuration = 4.0
-export(float) var fadeDuration = 1.0
-var timer = 0.0
-var isShowing = false
+export(float) var fadeDuration = 2
+
+var isFading = false
+var fadeTimer = 0.0
 
 func _ready():
 	$Label.visible = false
 	add_to_group("tutorial_ui")
 
 func _process(delta):
-	if not isShowing:
+	if not isFading:
 		return
-	
-	timer += delta
-	
-	if timer >= displayDuration + fadeDuration:
+
+	fadeTimer += delta
+	var fadeProgress = fadeTimer / fadeDuration
+
+	if fadeProgress >= 1.0:
 		$Label.visible = false
-		isShowing = false
-	elif timer >= displayDuration:
-		var fadeProgress = (timer - displayDuration) / fadeDuration
-		$Label.modulate.a = 1.0 - fadeProgress
+		isFading = false
 	else:
-		$Label.modulate.a = 1.0
+		$Label.modulate.a = 1.0 - fadeProgress
 
 func show_tip(text):
+	isFading = false
 	$Label.text = text
 	$Label.visible = true
 	$Label.modulate.a = 1.0
-	timer = 0.0
-	isShowing = true
+
+func hide_tip():
+	isFading = true
+	fadeTimer = 0.0
