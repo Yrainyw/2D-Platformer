@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 signal died
 
-enum State { NORMAL, DASHING }
+enum State { NORMAL, DASHING, INPUT_DISABLED }
 
 export (PackedScene) var playerDeathScene
 export (int, LAYERS_2D_PHYSICS) var dashHazardMask
@@ -45,6 +45,8 @@ func _process(delta):
 			process_normal(delta)
 		State.DASHING:
 			process_dash(delta)
+		State.INPUT_DISABLED:
+			process_input_disabled(delta)
 	isStateNew = false
 			
 			
@@ -64,9 +66,9 @@ func process_normal(delta):
 	velocity.x += moveVector.x * horizontalAcceleration * delta
 	
 	if (moveVector.x == 0):
-		velocity.x = lerp(velocity.x, 0, .1)
+		# velocity.x = lerp(velocity.x, 0, .1)
 		velocity.x = lerp(0, velocity.x, pow(2, -8 * delta))
-		
+	
 	velocity.x = clamp(velocity.x, -maxHorizontalSpeed, maxHorizontalSpeed)
 
 	if (moveVector.y < 0 && (is_on_floor() || !$CoyoteTimer.is_stopped() || hasDoubleJump)):
@@ -109,7 +111,7 @@ func process_normal(delta):
 
 func on_dash_cooldown_timeout():   # 新增
 	hasDash = true
-	
+
 
 func process_dash(delta):
 	if (isStateNew):
@@ -133,7 +135,16 @@ func process_dash(delta):
 	
 	if (abs(velocity.x) < minDashSpeed):
 		call_deferred("change_state", State.NORMAL)
+
+
+func process_input_disabled(delta):
+	if (isStateNew):
+		$AnimatedSprite.play("idle")
 		
+	velocity.x = lerp(0, velocity.x, pow(2, -8 * delta))
+	velocity.y += gravity * delta
+	velocity = move_and_slide(velocity, Vector2.UP)
+
 
 func get_movement_vector():
 	var moveVector = Vector2.ZERO
@@ -168,18 +179,22 @@ func kill():
 	emit_signal("died")
 
 
-func on_hazard_area_entered(_area2d):
-	$"/root/Helpers".apply_camera_shake(1)
-	call_deferred("kill")
-	
-	
+func disable_player_input():
+	change_state(State.INPUT_DISABLED)
+
+
 func spawn_footsteps(scale = 1):
 	var footstep = footstepParticles.instance()
 	get_parent().add_child(footstep)
 	footstep.scale = Vector2.ONE * scale
 	footstep.global_position = global_position
-	
-	
+
+
+func on_hazard_area_entered(_area2d):
+	$"/root/Helpers".apply_camera_shake(1)
+	call_deferred("kill")
+
+
 func on_dash_area_entered(area2d):
 	if area2d.is_in_group("enemy_hurtbox"):
 		area2d.get_parent().take_damage()
