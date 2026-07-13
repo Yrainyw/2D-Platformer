@@ -17,7 +17,7 @@ var maxDashSpeed = 500
 var minDashSpeed = 200
 var hasDash = true
 
-var jumpSpeed = 320 # 跳跃初速度(跳多高)
+var jumpSpeed = 325 # 跳跃初速度(跳多高)
 var jumpTerminationMultiplier = 4  # 松开跳跃键后,重力加倍的倍数(控制"跳跃高度可变":点一下跳得低,按住跳得高)
 var hasDoubleJump = false
 
@@ -67,7 +67,7 @@ func process_normal(delta):
 	
 	if (moveVector.x == 0):
 		# velocity.x = lerp(velocity.x, 0, .1)
-		velocity.x = lerp(0, velocity.x, pow(2, -8 * delta))
+		velocity.x = lerp(0, velocity.x, pow(2, -40 * delta))
 	
 	velocity.x = clamp(velocity.x, -maxHorizontalSpeed, maxHorizontalSpeed)
 
@@ -141,7 +141,7 @@ func process_input_disabled(delta):
 	if (isStateNew):
 		$AnimatedSprite.play("idle")
 		
-	velocity.x = lerp(0, velocity.x, pow(2, -8 * delta))
+	velocity.x = lerp(0, velocity.x, pow(2, -40 * delta))
 	velocity.y += gravity * delta
 	velocity = move_and_slide(velocity, Vector2.UP)
 
