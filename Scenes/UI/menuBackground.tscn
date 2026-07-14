@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Scenes/clouds.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/GameCamera.tscn" type="PackedScene" id=2]
@@ -13,13 +13,14 @@
 [ext_resource path="res://Scripts/Player/characters.gd" type="Script" id=11]
 [ext_resource path="res://Assets/Player/character_0002.png" type="Texture" id=12]
 [ext_resource path="res://Assets/Player/character_0003.png" type="Texture" id=13]
-[ext_resource path="res://Assets/Player/character_0009.png" type="Texture" id=14]
-[ext_resource path="res://Assets/Player/character_0010.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Sounds/impactGeneric_light_001.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Scenes/Util/RandomAudioStreamPlayer.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Scenes/Player/PlayerBlue.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Scenes/Player/PlayerGreen.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Scenes/Player/PlayerPink.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Scenes/Player/npcMerchant.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scripts/RandomAudioStreamPlayer.gd" type="Script" id=20]
+[ext_resource path="res://Assets/Sounds/click_002.ogg" type="AudioStream" id=21]
 
 [sub_resource type="OpenSimplexNoise" id=1]
 seed = 7124
@@ -42,6 +43,11 @@ tracks/0/keys = {
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 10 ) ],
 "loop": false,
 "name": "jump",
@@ -51,15 +57,7 @@ animations = [ {
 "loop": true,
 "name": "run",
 "speed": 10.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
 } ]
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 5.00045, 8.03342 )
 
 [sub_resource type="CircleShape2D" id=5]
 radius = 18.0
@@ -82,6 +80,11 @@ tracks/0/keys = {
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 6 ) ],
 "loop": false,
 "name": "jump",
@@ -91,12 +94,10 @@ animations = [ {
 "loop": true,
 "name": "run",
 "speed": 10.0
-}, {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
 } ]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 5.00045, 8.03342 )
 
 [sub_resource type="Animation" id=8]
 resource_name = "jump"
@@ -116,6 +117,11 @@ tracks/0/keys = {
 
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 8 ) ],
 "loop": false,
 "name": "jump",
@@ -125,15 +131,7 @@ animations = [ {
 "loop": true,
 "name": "run",
 "speed": 10.0
-}, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
 } ]
-
-[sub_resource type="RectangleShape2D" id=10]
-extents = Vector2( 5.00045, 8.03342 )
 
 [sub_resource type="Animation" id=11]
 resource_name = "jump"
@@ -153,6 +151,11 @@ tracks/0/keys = {
 
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 13 ) ],
 "loop": false,
 "name": "jump",
@@ -162,49 +165,7 @@ animations = [ {
 "loop": true,
 "name": "run",
 "speed": 10.0
-}, {
-"frames": [ ExtResource( 12 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
 } ]
-
-[sub_resource type="Animation" id=13]
-resource_name = "jump"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, -12 ), Vector2( 0, -40 ), Vector2( 0, -12 ) ]
-}
-
-[sub_resource type="SpriteFrames" id=14]
-animations = [ {
-"frames": [ ExtResource( 15 ) ],
-"loop": false,
-"name": "jump",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
-"loop": true,
-"name": "run",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
-} ]
-
-[sub_resource type="RectangleShape2D" id=15]
-extents = Vector2( 5.00045, 8.03342 )
 
 [node name="MenuBackground" type="Node2D"]
 
@@ -237,6 +198,20 @@ position = Vector2( 360, 72 )
 script = ExtResource( 11 )
 characterPlayerScene = ExtResource( 16 )
 
+[node name="MenuAudioPlayer" type="AudioStreamPlayer" parent="Yellow"]
+stream = ExtResource( 21 )
+bus = "SFX"
+
+[node name="JumpAudioPlayer" type="Node" parent="Yellow" instance=ExtResource( 15 )]
+script = ExtResource( 20 )
+numberToPlay = 1
+enablePitchRandomization = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Yellow/JumpAudioPlayer"]
+stream = ExtResource( 14 )
+volume_db = -12.0
+bus = "PlayerDash"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Yellow"]
 anims/jump = SubResource( 2 )
 
@@ -244,11 +219,6 @@ anims/jump = SubResource( 2 )
 position = Vector2( 0, -12 )
 frames = SubResource( 3 )
 animation = "idle"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Yellow"]
-visible = false
-position = Vector2( -35.9792, 63.8988 )
-shape = SubResource( 4 )
 
 [node name="HoverArea" type="Area2D" parent="Yellow"]
 
@@ -261,6 +231,19 @@ position = Vector2( 270, 162 )
 script = ExtResource( 11 )
 characterPlayerScene = ExtResource( 18 )
 
+[node name="MenuAudioPlayer" type="AudioStreamPlayer" parent="Green"]
+stream = ExtResource( 21 )
+bus = "SFX"
+
+[node name="JumpAudioPlayer" parent="Green" instance=ExtResource( 15 )]
+numberToPlay = 1
+enablePitchRandomization = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Green/JumpAudioPlayer"]
+stream = ExtResource( 14 )
+volume_db = -12.0
+bus = "PlayerDash"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Green"]
 anims/jump = SubResource( 6 )
 
@@ -269,21 +252,30 @@ position = Vector2( 0, -12 )
 frames = SubResource( 7 )
 animation = "idle"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Green"]
-visible = false
-position = Vector2( 0.020752, -8.10117 )
-shape = SubResource( 4 )
-
 [node name="HoverArea" type="Area2D" parent="Green"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Green/HoverArea"]
-position = Vector2( 0, -12 )
-shape = SubResource( 5 )
+visible = false
+position = Vector2( 0.020752, -8.10117 )
+shape = SubResource( 4 )
 
 [node name="Pink" type="KinematicBody2D" parent="."]
 position = Vector2( 108, 144 )
 script = ExtResource( 11 )
 characterPlayerScene = ExtResource( 19 )
+
+[node name="MenuAudioPlayer" type="AudioStreamPlayer" parent="Pink"]
+stream = ExtResource( 21 )
+bus = "SFX"
+
+[node name="JumpAudioPlayer" parent="Pink" instance=ExtResource( 15 )]
+numberToPlay = 1
+enablePitchRandomization = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Pink/JumpAudioPlayer"]
+stream = ExtResource( 14 )
+volume_db = -12.0
+bus = "PlayerDash"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pink"]
 anims/jump = SubResource( 8 )
@@ -293,11 +285,6 @@ position = Vector2( 0, -12 )
 frames = SubResource( 9 )
 animation = "idle"
 flip_h = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Pink"]
-visible = false
-position = Vector2( 0.0207672, -8.10117 )
-shape = SubResource( 10 )
 
 [node name="HoverArea" type="Area2D" parent="Pink"]
 
@@ -310,6 +297,19 @@ position = Vector2( 18, 90 )
 script = ExtResource( 11 )
 characterPlayerScene = ExtResource( 17 )
 
+[node name="MenuAudioPlayer" type="AudioStreamPlayer" parent="Blue"]
+stream = ExtResource( 21 )
+bus = "SFX"
+
+[node name="JumpAudioPlayer" parent="Blue" instance=ExtResource( 15 )]
+numberToPlay = 1
+enablePitchRandomization = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Blue/JumpAudioPlayer"]
+stream = ExtResource( 14 )
+volume_db = -12.0
+bus = "PlayerDash"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Blue"]
 anims/jump = SubResource( 11 )
 
@@ -319,39 +319,8 @@ frames = SubResource( 12 )
 animation = "idle"
 flip_h = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Blue"]
-visible = false
-position = Vector2( 63.0208, 62.8988 )
-shape = SubResource( 4 )
-
 [node name="HoverArea" type="Area2D" parent="Blue"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blue/HoverArea"]
-position = Vector2( 0, -12 )
-shape = SubResource( 5 )
-
-[node name="White" type="KinematicBody2D" parent="."]
-visible = false
-position = Vector2( 21, 90 )
-script = ExtResource( 11 )
-characterPlayerScene = ExtResource( 20 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="White"]
-anims/jump = SubResource( 13 )
-
-[node name="AnimatedSprite" type="AnimatedSprite" parent="White"]
-position = Vector2( 0, -12 )
-frames = SubResource( 14 )
-animation = "idle"
-flip_h = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="White"]
-visible = false
-position = Vector2( 0.0207672, -8.10117 )
-shape = SubResource( 15 )
-
-[node name="HoverArea" type="Area2D" parent="White"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="White/HoverArea"]
 position = Vector2( 0, -12 )
 shape = SubResource( 5 )

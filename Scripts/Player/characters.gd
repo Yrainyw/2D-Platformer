@@ -18,6 +18,7 @@ func on_mouse_entered():
 		return
 	animatedSprite.play("jump")
 	animationPlayer.play("jump")
+	$JumpAudioPlayer.play()
 
 
 func on_animation_finished():
@@ -29,5 +30,6 @@ func on_input_event(_viewport, event, _shape_idx):
 	if not $"/root/MenuState".characterSelectionEnabled:
 		return
 	if event is InputEventMouseButton and event.pressed and event.button_index == BUTTON_LEFT:
+		$MenuAudioPlayer.play()
 		$"/root/PlayerData".set_selected_character(characterPlayerScene)
 		$"/root/ScreenTransitionManager".transition_to_scene(levelScenePath)

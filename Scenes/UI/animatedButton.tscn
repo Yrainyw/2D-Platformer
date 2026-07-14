@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Resources/theme.tres" type="Theme" id=1]
 [ext_resource path="res://Scripts/animatedButton.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sounds/click_002.ogg" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "hover"
@@ -31,7 +32,7 @@ tracks/1/keys = {
 "values": [ Vector2( 112, 24 ), Vector2( 112, 24 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "click"
 length = 0.3
 tracks/0/type = "value"
@@ -61,8 +62,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+bus = "SFX"
+
 [node name="HoverAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/hover = SubResource( 1 )
 
 [node name="ClickAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/click = SubResource( 3 )
+anims/click = SubResource( 2 )

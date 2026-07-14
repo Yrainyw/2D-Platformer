@@ -11,6 +11,8 @@ func on_area_entered(_area2d):
 	
 	var baseLevel = get_tree().get_nodes_in_group("base_level")[0]
 	baseLevel.coin_collected()
+	$RandomAudioStreamPlayer1.play()
+	$RandomAudioStreamPlayer2.play()
 		
 		
 func disable_pickup():

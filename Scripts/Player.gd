@@ -97,6 +97,7 @@ func process_normal(delta):
 		
 	if (!wasOnFloor && is_on_floor() && !isStateNew):
 		spawn_footsteps(1.5)
+		$JumpAudioPlayer.play()
 		
 	if (is_on_floor()):
 		hasDoubleJump = true
@@ -115,6 +116,7 @@ func on_dash_cooldown_timeout():   # 新增
 
 func process_dash(delta):
 	if (isStateNew):
+		$DashAudioPlayer.play()
 		$DashParticles.emitting = true
 		$"/root/Helpers".apply_camera_shake(.75)
 		$DashArea/CollisionShape2D.disabled = false
