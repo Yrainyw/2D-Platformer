@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/NpcSound3(16-bit).wav-92f16f04479ee1c251e044d1acb89c0c.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/NPC/NpcSound3(16-bit).wav"
+dest_files=[ "res://.import/NpcSound3(16-bit).wav-92f16f04479ee1c251e044d1acb89c0c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

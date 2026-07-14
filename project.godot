@@ -22,6 +22,7 @@ ScreenTransitionManager="*res://Scenes/UI/screenTransitionManager.tscn"
 MenuState="*res://Scripts/menuState.gd"
 PlayerData="*res://Scripts/Player/playerData.gd"
 MouseCursor="*res://Scenes/UI/MouseCursor.tscn"
+MusicPlayer="*res://Scenes/Util/MusicPlayer.tscn"
 
 [display]
 
