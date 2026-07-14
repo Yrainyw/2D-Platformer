@@ -19,7 +19,7 @@
 [ext_resource path="res://Scenes/Player/PlayerBlue.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Scenes/Player/PlayerGreen.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Scenes/Player/PlayerPink.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Scenes/Player/PlayerWhite.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Scenes/Player/npcMerchant.tscn" type="PackedScene" id=20]
 
 [sub_resource type="OpenSimplexNoise" id=1]
 seed = 7124

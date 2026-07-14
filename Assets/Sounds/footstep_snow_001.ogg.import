@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/footstep_snow_001.ogg-2d962ac0b05cf3d9dcc9488e450881e6.oggstr"
+
+[deps]
+
+source_file="res://Assets/Sounds/footstep_snow_001.ogg"
+dest_files=[ "res://.import/footstep_snow_001.ogg-2d962ac0b05cf3d9dcc9488e450881e6.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

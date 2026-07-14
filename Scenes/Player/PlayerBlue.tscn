@@ -1,9 +1,20 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=26 format=2]
 
+[ext_resource path="res://Assets/Sounds/footstep_grass_003.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Player/character_0002.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Player/character_0003.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Player/playerDeathBlue.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Util/RandomAudioStreamPlayer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Sounds/footstep_grass_004.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Sounds/footstep_concrete_003.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Assets/Sounds/footstep_concrete_004.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Assets/Sounds/footstep_concrete_002.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Assets/Sounds/footstep_grass_001.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Assets/Sounds/footstep_concrete_000.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Assets/Sounds/footstep_concrete_001.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Assets/Sounds/footstep_grass_002.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Assets/Sounds/footstep_grass_000.ogg" type="AudioStream" id=15]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -41,6 +52,11 @@ extents = Vector2( 4, 7 )
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": false,
 "name": "jump",
@@ -50,11 +66,6 @@ animations = [ {
 "loop": true,
 "name": "run",
 "speed": 10.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "idle",
-"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=9]
@@ -71,6 +82,39 @@ collision_layer = 0
 script = ExtResource( 2 )
 playerDeathScene = ExtResource( 5 )
 dashHazardMask = 262144
+
+[node name="FootstepAudioPlayer" parent="." instance=ExtResource( 6 )]
+numberToPlay = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+stream = ExtResource( 15 )
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+stream = ExtResource( 11 )
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+stream = ExtResource( 14 )
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+stream = ExtResource( 1 )
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+stream = ExtResource( 7 )
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+stream = ExtResource( 12 )
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+stream = ExtResource( 13 )
+
+[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+stream = ExtResource( 10 )
+
+[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+stream = ExtResource( 8 )
+
+[node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
+stream = ExtResource( 9 )
 
 [node name="CoyoteTimer" type="Timer" parent="."]
 wait_time = 0.2
