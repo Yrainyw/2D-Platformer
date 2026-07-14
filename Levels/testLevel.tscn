@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/baseLevel.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Enemy/enemySpawner.tscn" type="PackedScene" id=2]
 
 [node name="BaseLevel" instance=ExtResource( 1 )]
 
@@ -9,3 +10,9 @@ tile_data = PoolIntArray( 65531, 0, 0, 65532, 0, 1, 65533, 0, 1, 65534, 0, 1, 65
 
 [node name="Flag" parent="." index="5"]
 position = Vector2( -72, 0 )
+
+[node name="EnemySpawner" parent="Enemies" index="0" instance=ExtResource( 2 )]
+position = Vector2( -18, 0 )
+
+[node name="PlayerRoot" parent="." index="10"]
+position = Vector2( 90, 0 )
