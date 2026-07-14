@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Assets/Sounds/footstep_grass_003.ogg" type="AudioStream" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -15,7 +15,6 @@
 [ext_resource path="res://Assets/Sounds/footstep_concrete_001.ogg" type="AudioStream" id=13]
 [ext_resource path="res://Assets/Sounds/footstep_grass_002.ogg" type="AudioStream" id=14]
 [ext_resource path="res://Assets/Sounds/footstep_grass_000.ogg" type="AudioStream" id=15]
-[ext_resource path="res://Scripts/RandomAudioStreamPlayer.gd" type="Script" id=16]
 [ext_resource path="res://Assets/Sounds/impactBell_heavy_004.ogg" type="AudioStream" id=17]
 [ext_resource path="res://Assets/Sounds/impactGeneric_light_001.ogg" type="AudioStream" id=18]
 
@@ -91,52 +90,42 @@ numberToPlay = 3
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
 stream = ExtResource( 15 )
-volume_db = -2.0
 bus = "Footsteps"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
 stream = ExtResource( 11 )
-volume_db = -2.0
 bus = "Footsteps"
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
 stream = ExtResource( 14 )
-volume_db = -2.0
 bus = "Footsteps"
 
 [node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
 stream = ExtResource( 1 )
-volume_db = -2.0
 bus = "Footsteps"
 
 [node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
 stream = ExtResource( 7 )
-volume_db = -2.0
 bus = "Footsteps"
 
 [node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
 stream = ExtResource( 12 )
-volume_db = -2.0
 bus = "Footsteps"
 
 [node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
 stream = ExtResource( 13 )
-volume_db = -2.0
 bus = "Footsteps"
 
 [node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
 stream = ExtResource( 10 )
-volume_db = -2.0
 bus = "Footsteps"
 
 [node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
 stream = ExtResource( 8 )
-volume_db = -2.0
 bus = "Footsteps"
 
 [node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="FootstepAudioPlayer"]
 stream = ExtResource( 9 )
-volume_db = -2.0
 bus = "Footsteps"
 
 [node name="DashAudioPlayer" parent="." instance=ExtResource( 6 )]
@@ -151,24 +140,23 @@ bus = "PlayerDash"
 stream = ExtResource( 17 )
 bus = "PlayerDash"
 
-[node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
-
-[node name="JumpAudioPlayer" type="Node" parent="." instance=ExtResource( 6 )]
-script = ExtResource( 16 )
+[node name="JumpAudioPlayer" parent="." instance=ExtResource( 6 )]
 numberToPlay = 1
 enablePitchRandomization = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="JumpAudioPlayer"]
 stream = ExtResource( 18 )
-volume_db = -12.0
+volume_db = -7.0
 bus = "PlayerDash"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="JumpAudioPlayer"]
 stream = ExtResource( 18 )
-volume_db = -12.0
+volume_db = -7.0
 bus = "PlayerDash"
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 
 [node name="DashCooldownTimer" type="Timer" parent="."]
 wait_time = 0.003

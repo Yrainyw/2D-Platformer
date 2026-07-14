@@ -4,6 +4,8 @@ signal back_pressed
 
 onready var backButton = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/BackButton
 onready var windowModeButton = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/WindowModeButton
+onready var musicRangeControl = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/MusicVolumnContainer/RangeControl
+onready var sfxRangeControl = $MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SFXVolumnContainer/RangeControl
 
 var fullscreen = false
 
@@ -11,13 +13,35 @@ var fullscreen = false
 func _ready():
 	windowModeButton.connect("pressed", self, "on_window_mode_pressed")
 	backButton.connect("pressed", self, "on_back_pressed")
+	musicRangeControl.connect("percentage_changed", self, "on_music_volumn_changed")
+	sfxRangeControl.connect("percentage_changed", self, "on_sfx_volumn_changed")
 	update_display()
-	
-	
+	update_initial_volumn_setting()
+
+
 func update_display():
 	windowModeButton.text = "WINDOWED" if fullscreen else "FULLSCREEN"
-
 	
+	
+func update_bus_volumn(busName, vloumnPercent):
+	var busIdx = AudioServer.get_bus_index(busName)
+	var volumnDb = linear2db(vloumnPercent)
+	AudioServer.set_bus_volume_db(busIdx, volumnDb)
+
+
+func get_bus_volumn_percentage(busName):
+	var busIdx = AudioServer.get_bus_index(busName)
+	var volumnPercent = db2linear(AudioServer.get_bus_volume_db(busIdx))
+	return volumnPercent
+
+func update_initial_volumn_setting():
+	var musicPercent = get_bus_volumn_percentage("Music")
+	musicRangeControl.set_current_percentage(musicPercent)
+	
+	var sfxPercent = get_bus_volumn_percentage("SFX")
+	sfxRangeControl.set_current_percentage(sfxPercent)
+
+
 func on_window_mode_pressed():
 	fullscreen = !fullscreen
 	OS.window_fullscreen = fullscreen
@@ -26,3 +50,10 @@ func on_window_mode_pressed():
 
 func on_back_pressed():
 	emit_signal("back_pressed")
+
+
+func on_music_volumn_changed(percent):
+	update_bus_volumn("Music", percent)
+
+func on_sfx_volumn_changed(percent):
+	update_bus_volumn("SFX", percent)
