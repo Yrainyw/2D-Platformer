@@ -92,7 +92,7 @@ maxPitchScale = 1.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RandomAudioStreamPlayer1"]
 stream = ExtResource( 5 )
-volume_db = -10.0
+volume_db = -12.0
 bus = "SFX"
 
 [node name="RandomAudioStreamPlayer2" parent="." instance=ExtResource( 4 )]
@@ -100,27 +100,27 @@ numberToPlay = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RandomAudioStreamPlayer2"]
 stream = ExtResource( 7 )
-volume_db = -12.0
+volume_db = -15.0
 bus = "SFX"
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="RandomAudioStreamPlayer2"]
 stream = ExtResource( 10 )
-volume_db = -12.0
+volume_db = -15.0
 bus = "SFX"
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="RandomAudioStreamPlayer2"]
 stream = ExtResource( 8 )
-volume_db = -12.0
+volume_db = -15.0
 bus = "SFX"
 
 [node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="RandomAudioStreamPlayer2"]
 stream = ExtResource( 6 )
-volume_db = -12.0
+volume_db = -15.0
 bus = "SFX"
 
 [node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="RandomAudioStreamPlayer2"]
 stream = ExtResource( 9 )
-volume_db = -12.0
+volume_db = -15.0
 bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -137,4 +137,5 @@ shape = SubResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
+frame = 1
 playing = true
