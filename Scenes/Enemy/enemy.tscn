@@ -59,7 +59,6 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "spawn"
-length = 0.75
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Visuals/AnimatedSprite:animation")
@@ -123,21 +122,20 @@ radius = 5.0
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ ExtResource( 4 ) ],
-"loop": true,
-"name": "spawn",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "run",
 "speed": 10.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "spawn",
+"speed": 5.0
 } ]
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 0
 script = ExtResource( 3 )
-isSpawning = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "spawn"
@@ -171,6 +169,7 @@ shape = SubResource( 5 )
 disabled = true
 
 [node name="HitboxArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 0
 
@@ -180,7 +179,6 @@ shape = SubResource( 6 )
 disabled = true
 
 [node name="Visuals" type="Node2D" parent="."]
-scale = Vector2( 0.4608, 0.4608 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Visuals"]
 frames = SubResource( 7 )
